@@ -13,10 +13,10 @@ with title and paragraph in his note he can edit and delete his note Also
 we try to make simple demo As an application on Jetpack compose in AndroidX  
 
 ## By using
-# Kotlin
-# Room database
-# Kotlin Coroutine
-# Navigation
+### Kotlin
+### Room database
+### Kotlin Coroutine
+## Navigation
 
 ## Libraries
 
