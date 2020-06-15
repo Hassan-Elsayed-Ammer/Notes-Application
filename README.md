@@ -9,7 +9,7 @@ user can save his own data or note in a good User interface
 with title and paragraph in his note he can edit and delete his note Also 
 
 
-##Technology used
+## Technology used
 we try to make simple demo As an application on Jetpack compose in AndroidX  
 
 ## By using
