@@ -9,17 +9,18 @@ user can save his own data or note in a good User interface
 with title and paragraph in his note he can edit and delete his note Also 
 
 
-## Technology used
+##Technology used
 we try to make simple demo As an application on Jetpack compose in AndroidX  
 
-## By using
-### Kotlin
-### Room database
-### Kotlin Coroutine
-### Navigation
+##By using
+#Kotlin
+#Room database
+#Kotlin Coroutine
+#Navigation
 
-## Libraries
+##Libraries
 
+```bash
 apply plugin: "androidx.navigation.safeargs"
 apply plugin: "kotlin-kapt"
 
@@ -40,3 +41,4 @@ implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 //coroutines And coroutines for room
 implementation "androidx.room:room-ktx:$room_version"
 implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4'
+```
