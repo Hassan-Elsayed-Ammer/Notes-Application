@@ -24,20 +24,31 @@ we try to make simple demo As an application on Jetpack compose in AndroidX
 apply plugin: "androidx.navigation.safeargs"
 apply plugin: "kotlin-kapt"
 
+```
+
+```bash
 def room_version = "2.2.5"
 def nav_version = "2.3.0-rc01"
+```
 
+```bash
 //Material Design
 implementation 'com.google.android.material:material:1.1.0'
+```
 
+```bash
 //room
 implementation "androidx.room:room-runtime:$room_version"
 kapt "androidx.room:room-compiler:$room_version"
+```
 
+```bash
 //Nav Fragment
 implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
 implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+```
 
+```bash
 //coroutines And coroutines for room
 implementation "androidx.room:room-ktx:$room_version"
 implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4'
