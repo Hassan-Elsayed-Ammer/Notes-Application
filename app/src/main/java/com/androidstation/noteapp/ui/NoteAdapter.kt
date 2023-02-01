@@ -21,8 +21,8 @@ class NoteAdapter(private val notes :List<Note>): RecyclerView.Adapter<NoteAdapt
 
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
-        holder.view.text_view_title.text = notes[position].title
-        holder.view.text_view_note.text = notes[position].note
+        holder.view.tv_title.text = notes[position].title
+        holder.view.tv_note.text = notes[position].note
 
         //setOnclick  to update currant note
         holder.view.setOnClickListener {

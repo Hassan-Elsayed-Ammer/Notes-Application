@@ -28,7 +28,7 @@ class HomeFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
 
         recycler_view_note.setHasFixedSize(true)
-        recycler_view_note.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+        recycler_view_note.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
         //Fitch The note
         launch {
