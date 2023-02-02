@@ -28,6 +28,7 @@
         android:hint="Note"
         android:inputType="textMultiLine"
         android:padding="12dp"
+        android:background="@color/transparent"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
