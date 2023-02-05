@@ -1,14 +1,12 @@
-package com.androidstation.noteapp.ui
+package com.androidstation.noteapp.ui.fragments
 
 import android.app.AlertDialog
-import android.content.Context
-import android.os.AsyncTask
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.Toast
 import androidx.navigation.Navigation
 import com.androidstation.noteapp.R
+import com.androidstation.noteapp.databinding.FragmentAddNoteBinding
 import com.androidstation.noteapp.db.Note
 import com.androidstation.noteapp.db.NoteDataBase
 import com.androidstation.noteapp.utils.toast
@@ -16,24 +14,28 @@ import kotlinx.android.synthetic.main.fragment_add_note.*
 import kotlinx.coroutines.launch
 
 
-class AddNoteFragment : BaseFragment() {
+class AddNoteFragment : Fragment() {
+
+    lateinit var binding: FragmentAddNoteBinding
     private var note: Note? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        binding = FragmentAddNoteBinding.inflate(inflater,container,false)
         //set option menu function in on create
         setHasOptionsMenu(true)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_note, container, false)
+        return  binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         arguments?.let {
-            note = AddNoteFragmentArgs.fromBundle(it).note
+            note = com.androidstation.noteapp.ui.AddNoteFragmentArgs.fromBundle(it).note
             et_title.setText(note?.title)
             et_note.setText(note?.note)
 
@@ -70,7 +72,8 @@ class AddNoteFragment : BaseFragment() {
                         it.toast("Note Updated")
                     }
 
-                    val action = AddNoteFragmentDirections.actionSaveNote()
+                    val action =
+                        com.androidstation.noteapp.ui.AddNoteFragmentDirections.actionSaveNote()
                     Navigation.findNavController(view).navigate(action)
                 }
             }
@@ -86,7 +89,8 @@ class AddNoteFragment : BaseFragment() {
                 launch {
                     //delete from database
                     NoteDataBase(context).getNoteDao().deleteNote(note!!)
-                    val action = AddNoteFragmentDirections.actionSaveNote()
+                    val action =
+                        com.androidstation.noteapp.ui.AddNoteFragmentDirections.actionSaveNote()
                     Navigation.findNavController(requireView()).navigate(action)
                 }
             }

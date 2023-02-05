@@ -1,5 +1,6 @@
 package com.androidstation.noteapp.db
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
@@ -8,13 +9,13 @@ interface NoteDao {
     //suspend key word before fun is coroutines scoop
 
     //Insert In table
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addNote(note :Note)
 
     //Get All Note return list of notes
     //ORDER BY id DESC --> to display lasted note first
-    @Query("SELECT * FROM note ORDER BY id DESC ")
-    suspend fun getAllNotes() : List<Note>
+    @Query("SELECT * FROM note_item ORDER BY id DESC ")
+    suspend fun getAllNotes() : LiveData<List<Note>>
 
     //add Multiple Notes
     @Insert

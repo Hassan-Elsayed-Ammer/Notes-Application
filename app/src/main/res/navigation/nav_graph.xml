@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.androidstation.noteapp.ui.HomeFragment"
+        android:name="com.androidstation.noteapp.ui.fragments.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home">
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/addNoteFragment"
-        android:name="com.androidstation.noteapp.ui.AddNoteFragment"
+        android:name="com.androidstation.noteapp.ui.fragments.AddNoteFragment"
         android:label="Add Note"
         tools:layout="@layout/fragment_add_note">
         <action
