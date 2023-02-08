@@ -10,24 +10,27 @@ interface NoteDao {
 
     //Insert In table
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addNote(note :Note)
+    suspend fun addNote(note: Note)
+
+    //update note
+    @Update
+    suspend fun updateNote(note: Note)
+
+    //delete
+    @Delete
+    suspend fun deleteNote(note: Note)
 
     //Get All Note return list of notes
     //ORDER BY id DESC --> to display lasted note first
     @Query("SELECT * FROM note_item ORDER BY id DESC ")
-    suspend fun getAllNotes() : LiveData<List<Note>>
+    fun getAllNotes(): LiveData<List<Note>>
 
     //add Multiple Notes
     @Insert
     suspend fun addMultipleNotes(vararg note: Note)
 
-    //update note
-    @Update
-    suspend fun updateNote(note: Note )
 
-    //delete
-    @Delete
-    suspend fun deleteNote(note: Note)
+
 
 
 

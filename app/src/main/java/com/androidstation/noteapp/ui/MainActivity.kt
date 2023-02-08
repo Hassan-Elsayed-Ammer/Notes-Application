@@ -1,37 +1,46 @@
 package com.androidstation.noteapp.ui
 
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.androidstation.noteapp.R
 import com.androidstation.noteapp.databinding.ActivityMainBinding
-import com.androidstation.noteapp.db.NoteDataBase
-import com.androidstation.noteapp.repositories.NoteRepository
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var viewModel: NoteViewModel
     private lateinit var binding: ActivityMainBinding
+
+
+
+    private lateinit var navController: NavController
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val toolBar = binding.toolbar
+        //toolBar.setTitleTextColor(R.color.)
 
-        val navController = Navigation.findNavController(this, R.id.fragment)
-        NavigationUI.setupActionBarWithNavController(this, navController)
 
-        setUpViewModel()
-    }
+        // create reference from nave host fragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragment)
+        // reassign the navController to nav host because nav host has already nav Controller to control on fragments that will appeared in feature
+        navController = navHostFragment!!.findNavController()
 
-    private fun setUpViewModel() {
-        // prepare repository
-        val repository = NoteRepository(NoteDataBase(this))
+//        val navController = Navigation.findNavController(this, R.id.fragment)
+//        NavigationUI.setupActionBarWithNavController(this, navController)
+        setSupportActionBar(toolBar)
+        setupActionBarWithNavController(navController)
 
-        //prepare view model factory
-        val viewModelFactory = NoteViewModelFactory(application, repository)
 
-        viewModel = ViewModelProvider(this, viewModelFactory)[NoteViewModel::class.java]
     }
 
     //Function to handle Back button

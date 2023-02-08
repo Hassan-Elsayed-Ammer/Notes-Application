@@ -13,12 +13,25 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_add_note"
-            app:destination="@id/addNoteFragment" />
+            app:destination="@id/addNoteFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_homeFragment_to_updateFragment"
+            app:destination="@id/updateFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/addNoteFragment"
         android:name="com.androidstation.noteapp.ui.fragments.AddNoteFragment"
-        android:label="Add Note"
+        android:label="New Note"
         tools:layout="@layout/fragment_add_note">
         <action
             android:id="@+id/action_save_note"
@@ -28,5 +41,18 @@
             android:name="Note"
             app:nullable="true"
             android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.androidstation.noteapp.ui.fragments.UpdateFragment"
+        android:label="Update Note"
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_updateFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <argument
+            android:name="note"
+            app:argType="com.androidstation.noteapp.db.Note"
+            app:nullable="true" />
     </fragment>
 </navigation>

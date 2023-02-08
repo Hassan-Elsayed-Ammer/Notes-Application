@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_white"
-    tools:context=".ui.fragments.AddNoteFragment">
+    tools:context=".ui.fragments.UpdateFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
@@ -26,27 +26,26 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btn_save"
+                android:id="@+id/btn_done"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="32dp"
                 android:src="@drawable/ic_done"
-                android:backgroundTint="@color/colorSecond"
                 android:tintMode="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/et_body"
+                android:backgroundTint="@color/colorSecond"
+                app:layout_constraintBottom_toBottomOf="@+id/et_body_update"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
-                android:id="@+id/et_title"
+                android:id="@+id/et_title_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Title"
                 android:inputType="text"
                 android:padding="12dp"
-
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColorHint="@color/black"
                 android:textStyle="bold"
@@ -55,24 +54,22 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/et_body"
+                android:id="@+id/et_body_update"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_below="@id/et_title"
+                android:layout_below="@id/et_title_update"
                 android:background="@color/transparent"
                 android:gravity="top"
                 android:hint="Type something..."
-
                 android:inputType="textMultiLine"
-                android:padding="24dp"
+                android:padding="12dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_title" />
+                app:layout_constraintTop_toBottomOf="@+id/et_title_update" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </androidx.cardview.widget.CardView>
 

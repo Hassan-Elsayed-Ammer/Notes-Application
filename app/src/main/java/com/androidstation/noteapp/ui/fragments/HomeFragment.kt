@@ -1,63 +1,83 @@
 package com.androidstation.noteapp.ui.fragments
 
+import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.androidstation.noteapp.db.NoteDataBase
 import com.androidstation.noteapp.adapter.NoteAdapter
 import com.androidstation.noteapp.databinding.FragmentHomeBinding
+import com.androidstation.noteapp.db.Note
+import com.androidstation.noteapp.db.NoteDataBase
+import com.androidstation.noteapp.repositories.NoteRepository
 import com.androidstation.noteapp.ui.NoteViewModel
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.coroutines.launch
+import com.androidstation.noteapp.ui.NoteViewModelFactory
 
 
 class HomeFragment : Fragment() {
-
     lateinit var binding: FragmentHomeBinding
-    private lateinit var viewModel: NoteViewModel
+    private lateinit var homeViewModel: NoteViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentHomeBinding.inflate(inflater,container,false)
-        viewModel = ViewModelProvider(this)[NoteViewModel::class.java]
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        setUpViewModel()
 
 
-        viewModel.getAllNotesUseCoroutine()
+        binding.btnAdd.setOnClickListener {
+            goToAddNoteFragment()
+        }
+
+        homeViewModel.getAllNotes().observe(viewLifecycleOwner) { noteList ->
+            //add data in recyclerView and show recycler view
+            setUpRecyclerView(noteList)
+
+        }
+
 
 
         return binding.root
-
-
     }
 
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        recycler_view_note.setHasFixedSize(true)
-        recycler_view_note.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-
-        //Fitch The note
-        launch {
-            context?.let{
-                val notes = NoteDataBase(it).getNoteDao().getAllNotes()
-                recycler_view_note.adapter = NoteAdapter(notes)
+    private fun setUpRecyclerView(noteList: List<Note>) {
+        if (noteList.isNotEmpty()) {
+            binding.cardView.visibility = View.GONE
+            binding.recyclerViewNote.apply {
+                visibility = View.VISIBLE
+                layoutManager = StaggeredGridLayoutManager(
+                    2, StaggeredGridLayoutManager.VERTICAL
+                )
+                setHasFixedSize(true)
+                adapter = NoteAdapter(noteList)
             }
+        } else {
+            binding.cardView.visibility = View.VISIBLE
+            binding.recyclerViewNote.visibility = View.GONE
         }
+    }
 
-        btn_add.setOnClickListener(){
-            val action = com.androidstation.noteapp.ui.HomeFragmentDirections.actionAddNote()
-            Navigation.findNavController(it).navigate(action)
-        }
+    private fun goToAddNoteFragment() {
+        val action = HomeFragmentDirections.actionAddNote()
+        findNavController().navigate(action)
+    }
 
+    private fun setUpViewModel() {
+        val noteRepository = NoteRepository(
+            NoteDataBase.getDataBase(requireContext())
+        )
+        val viewModelFactory = NoteViewModelFactory(Application(), noteRepository)
+
+        homeViewModel = ViewModelProvider(this, viewModelFactory)[NoteViewModel::class.java]
     }
 
 }

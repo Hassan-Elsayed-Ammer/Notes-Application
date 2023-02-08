@@ -6,10 +6,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.androidstation.noteapp.repositories.NoteRepository
 
 class NoteViewModelFactory(
-    val app: Application,
-    private val repository: NoteRepository
-) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return NoteViewModel(app, repository) as T
+    val app:Application ,
+    private val noteRepository: NoteRepository
+): ViewModelProvider.NewInstanceFactory() {
+
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return NoteViewModel(app,noteRepository) as T
     }
+
 }
