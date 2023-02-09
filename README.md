@@ -27,6 +27,8 @@ we try to make simple demo As an application on Jetpack compose in AndroidX
 
 ### Git Flow technic
 
+<img src="images/mvvm_note_kotlin_app.gif" height=250, width=150 >
+
 <img src="images/02.jpg" height=250, width=150 >
 
 <img src="images/03.jpg" height=250, width=150 >
