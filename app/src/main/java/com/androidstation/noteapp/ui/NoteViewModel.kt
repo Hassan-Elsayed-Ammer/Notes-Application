@@ -14,23 +14,6 @@ class NoteViewModel(
 
 ) : AndroidViewModel(application) {
 
-    private val notesList = mutableListOf<Note>()
-
-
-    private val _noteMutableList: MutableLiveData<List<Note>> = MutableLiveData()
-    val noteLiveData: LiveData<List<Note>> = _noteMutableList
-
-    /**
-     * use viewModelScope is a efficient way to tie view Activity/Fragment Life with Coroutine Life */
-    // add new and update exist.
-//    init {
-//        // make live data list = normal data list
-//        _noteMutableList.value = notesList
-//        val dao = NoteDataBase.getDataBase(application).getNoteDao()
-//        repo = NoteRepository(dao)
-//
-//    }
-
     fun addNote(note: Note) {
         viewModelScope.launch {
             noteRepo.addNote(note)

@@ -6,7 +6,7 @@ import androidx.room.*
 @Dao
 interface NoteDao {
 
-    //suspend key word before fun is coroutines scoop
+    //suspend key word before fun is coroutines scope
 
     //Insert In table
     @Insert(onConflict = OnConflictStrategy.REPLACE)

@@ -33,7 +33,6 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         setUpViewModel()
 
-
         binding.btnAdd.setOnClickListener {
             goToAddNoteFragment()
         }
@@ -43,8 +42,6 @@ class HomeFragment : Fragment() {
             setUpRecyclerView(noteList)
 
         }
-
-
 
         return binding.root
     }
