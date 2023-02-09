@@ -73,11 +73,6 @@ implementation "androidx.room:room-ktx:$room_version"
 implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4'
 ```
 
-```bash
-//coroutines And coroutines for room
-implementation "androidx.room:room-ktx:2.5.0"
-implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
-```
 
 ```bash
 // Architectural Components
