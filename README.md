@@ -29,13 +29,12 @@ we try to make simple demo As an application on Jetpack compose in AndroidX
 
 <img src="images/mvvm_note_kotlin_app.gif" height=300, width=250 >
 
-<img src="images/02.jpg" height=250, width=150 >
+<img src="images/02.jpg" height=250, width=150 >  <img src="images/03.jpg" height=250, width=150 >
 
-<img src="images/03.jpg" height=250, width=150 >
 
-<img src="images/04.jpg" height=250, width=150 >
+<img src="images/04.jpg" height=250, width=150 >  <img src="images/05.jpg" height=250, width=150 >
 
-<img src="images/05.jpg" height=250, width=150 >
+
 
 
 ## Libraries
