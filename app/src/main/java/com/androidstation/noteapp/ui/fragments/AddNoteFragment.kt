@@ -45,7 +45,6 @@ class AddNoteFragment : Fragment() {
         val noteRepository = NoteRepository(
             NoteDataBase.getDataBase(requireContext())
         )
-
         val viewModelFactory = NoteViewModelFactory(Application(),noteRepository)
         addNoteViewModel =  ViewModelProvider(this ,viewModelFactory)[NoteViewModel::class.java]
     }
@@ -77,10 +76,4 @@ class AddNoteFragment : Fragment() {
         Snackbar.make(requireView(), "Note Save Successfully!", Snackbar.LENGTH_LONG).show()
     }
 
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.clear()
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu, menu)
-    }
 }
