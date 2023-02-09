@@ -9,7 +9,7 @@ can edit and delete his note Also
 
 ## Technology used
 
-we try to make simple demo As an application on Jetpack compose in AndroidX
+we try to make simple demo As an application on Jetpack compose libraries in AndroidX
 
 ## By using
 
