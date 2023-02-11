@@ -21,6 +21,8 @@ we try to make simple demo As an application on Jetpack compose libraries in And
 
 ### Navigation
 
+### ViewBinding
+
 ### MVVM - Clean Architect Stage
 
 ### Repository Pattern
